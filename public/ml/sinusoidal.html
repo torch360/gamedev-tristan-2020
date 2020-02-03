@@ -1,0 +1,156 @@
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.2"> </script> 
+
+ 
+ 
+ <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@2.3.1/build/vega-lite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@3.2.0/build/vega-embed.js"></script>
+
+
+
+
+
+
+Sample Number: <input id="mySamples" type="number" value="8"><br>
+Epoch : <input id="myEpoch" type="number" value="5">Epoch Batches : <input id="myBatch" type="number" value="100">
+Step to test: <input id="myStep" type="number" value="10"><br> 
+
+
+
+
+
+ 
+ Try this sinusoidal <br>
+y =  <input id="myAmp1" type="number" value="20"> * sin(((2*<input id="myMain1" type="number" value="8">*PI/180) * X - 
+ <input id="myXshift1" type="number" value="0">)/<input id="myWavelength1" type="number" value="40"> )
+ 
++ <input id="myYshift1" type="number" value="0"><br>
+ 
++<br><br>
+<input id="myAmp2" type="number" value="20"> * sin(((2*<input id="myMain2" type="number" value="4">*PI/180) * X - 
+ <input id="myXshift2" type="number" value="0">)/<input id="myWavelength2" type="number" value="40"> )
+ 
++ <input id="myYshift2" type="number" value="0"><br>
+ 
+ +<br><br>
+ 
+ <input id="myAmp3" type="number" value="20"> * sin(((2*<input id="myMain3" type="number" value="2">*PI/180) * X - 
+ <input id="myXshift3" type="number" value="0">)/<input id="myWavelength3" type="number" value="40"> )
+ 
++ <input id="myYshift3" type="number" value="0"><br>
+ 
+ 
+ 
+ 
+ 
+ <textarea id="myX" cols="120">0, 1, 2, 3, 4, 5, 6, 7, 8</textarea><br>
+ <textarea id="myY" cols="120">0, 1, 0, 1, 0, 1, 0, 1, 0</textarea><br>
+ 
+ 
+<input id="myButton123" type="button" value="Line Graph" onclick="{
+  
+                                                              
+                                                                  
+ var lossValues = []   
+ myCount = 0  
+ myTempY = []            
+ myTempX = [] 
+                                                                  
+                                                                  
+ if (this.value == 'Stop'){ 
+   clearInterval(document.myInterval) 
+   document.getElementById('myButton123').value =  'Line Graph' 
+ } else {                                                               
+   document.myInterval = setInterval(function(){                       
+      document.getElementById('myButton123').value =  'Stop'                                                            
+
+      document.getElementById('myDiv123').innerHTML = 'Push stop when ready to train<br>'
+      
+       myTempY[myCount]  = ((((parseFloat(document.getElementById('myAmp1').value)  *   Math.sin( (2*parseFloat(document.getElementById('myMain1').value) * Math.PI / 180)* (  myCount - parseFloat(document.getElementById('myXshift1').value)   )) / parseFloat(document.getElementById('myWavelength1').value)  )  +  parseFloat(document.getElementById('myYshift1').value) ))    +
+        (((parseFloat(document.getElementById('myAmp2').value)  *   Math.sin( (2*parseFloat(document.getElementById('myMain2').value) * Math.PI / 180)* (  myCount - parseFloat(document.getElementById('myXshift2').value)   )) / parseFloat(document.getElementById('myWavelength2').value)  )  +  parseFloat(document.getElementById('myYshift2').value) ))   +
+         (((parseFloat(document.getElementById('myAmp3').value)  *   Math.sin( (2*parseFloat(document.getElementById('myMain3').value) * Math.PI / 180)* (  myCount - parseFloat(document.getElementById('myXshift3').value)   )) / parseFloat(document.getElementById('myWavelength3').value)  )  +  parseFloat(document.getElementById('myYshift3').value) ))).toFixed(2)  
+      
+                                                                                      
+      myTempX[myCount] = myCount
+      
+                                                                                      
+      lossValues.push({'Time': myCount, 'Step': myTempY[myCount] ,  'Label': 'Sine'})
+      vegaEmbed(
+          '#myDivVega', {
+            '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
+            'data': {'values': lossValues},
+            'mark':  'line',
+            'encoding': {
+              'x': {
+                  'field': 'Time', 
+                  'type': 'quantitative' 
+               },
+              'y': {
+                   'field': 'Step',
+                   'type': 'quantitative' 
+                },
+              'color': {'field': 'Label', 'type': 'nominal'}                             
+            }
+          },
+          {})
+                                                                                       
+                                                                  
+     document.getElementById('myX').value    = myTempX                     
+     document.getElementById('myY').value    = myTempY                                                                            
+     document.getElementById('mySamples').value = myCount 
+                                                                  
+                                                                  
+     myCount +=1                                                             
+                                                                                                                               
+     }, 10);   // end setInterval
+                                                                       
+                                                                                  
+                                                                                      
+    }       // end else if                                                                        
+           
+ }">
+<input id="myButton123" type="button" value="Train and Test" onclick="{                                                                          
+                                                                                      
+     async function myGo() {                                                                                
+                                                                                      
+   document.getElementById('myDiv123').innerHTML =  ''                                                                            
+   const model = tf.sequential();
+                                                                                                                                                               
+   model.add(tf.layers.dense({inputShape: [1],  units: 10}) );  
+   model.add(tf.layers.dense({inputShape: [10], units: 10}) );  
+   model.add(tf.layers.dense({inputShape: [10], units: 1}) );  
+                                                                              
+                                                                                 
+                                                                                 
+   model.compile({loss: 'meanSquaredError', optimizer: 'rmsprop'});
+
+    const xs = tf.tensor2d(document.getElementById('myX').value.split(','), [parseInt(document.getElementById('mySamples').value)+1, 1], 'float32');
+    const ys = tf.tensor2d(document.getElementById('myY').value.split(','), [parseInt(document.getElementById('mySamples').value)+1, 1], 'float32');
+                                                                                       
+    for (let myLoop = 1; myLoop <= document.getElementById('myBatch').value; myLoop++) {                                                                                 
+        var myFit = await model.fit(xs, ys,{'epochs':document.getElementById('myEpoch').value});
+        if (myLoop % 20 == 0){   
+             await tf.nextFrame();   // This allows the GUI to update but only every 20 batches      
+             document.getElementById('myDiv123').innerHTML  =  'Loss after Batch ' + myLoop + ' : ' + myFit.history.loss[0].toFixed(5) +'<br><br>'                                                                           
+        }
+                                                                   
+    }                                                                       
+                                                                    
+    const myResult =    model.predict(tf.tensor2d(document.getElementById('myStep').value.split(','), [1,1], 'float32')).dataSync()[0]
+                                                                                      
+    document.getElementById('myDiv123').innerHTML =  'For step '+document.getElementById('myStep').value+' Got : ' + myResult.toFixed(2)                                                                           
+   }
+
+
+   myGo() 
+                                                                      
+                                                                      
+                                                                      
+}"><br><br>
+
+ 
+ 
+
+<div id="myDivVega">...</div><br> 
+ 
+<div id='myDiv123'>...</div><br>
