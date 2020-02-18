@@ -1,10 +1,55 @@
 <h1 align=center>T3A06-inputoutputfunction-tristan.html</h1>
 
+<input type=text id="myText01" placeholder="First Name">
+<input type=button value='Show 1' onclick="{
+document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value
+}"><br>
 
-<input type=text id="myText01" placeholder="First name">
 <input type=text id="myText02" placeholder="Last Name">
-<input type=button value="Show 1" onclick="{
+
+<input type=button value="Show 2" onclick="{
   document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value
+}"><br>
+
+<input type=text id="myText03" placeholder="Eye Colour">
+
+<input type=button value="Show 3" onclick="{
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value
 }">
-<div id='myDiv01'>...</div>
+<br>
+
+
+<input type=text placeholder="Age" id="myText04">
+
+<input type=button value="Show 4" onclick="{
+  
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value + ' Age: ' + document.getElementById('myText04').value
+}"><br>
+
+<input type=text id=myText05 placeholder=Weight>
+<input type=button value='Show 5' onclick="{
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value +' '+ ' Age: ' + document.getElementById('myText04').value + ' ' + 'Weight: '  + document.getElementById('myText05').value
+}"><br>
+
+<input type=text id=myText06 placeholder=Height>
+<input type=button value='Show 6' onclick="{
+
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value +' '+ ' Age: ' + document.getElementById('myText04').value + ' ' + 'Weight: '  + document.getElementById('myText05').value +' Height: '+ document.getElementById('myText06').value
+}"><br>
+
+<input type=text id=myText07 placeholder='Hair Colour'>
+<input type=button value='Show 7' onclick="{
+  
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value +' '+ ' Age: ' + document.getElementById('myText04').value + ' ' + 'Weight: '  + document.getElementById('myText05').value +' Height: '+ document.getElementById('myText06').value + ' Hair Colour: ' + document.getElementById('myText07').value
+}"><br>
+
+<input type=text id=myText08 placeholder=Gender>
+<input type=button value='Show 8' onclick="{
+  document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value +' '+ document.getElementById('myText02').value + ' Eye Colour: ' + document.getElementById('myText03').value +' '+ ' Age: ' + document.getElementById('myText04').value + ' ' + 'Weight: '  + document.getElementById('myText05').value +' Height: '+ document.getElementById('myText06').value + ' Hair Colour: ' + document.getElementById('myText07').value + ' Gender: ' + document.getElementById('myText08').value
+}">
+
+
+
+<div id=myDiv01>...</div>
+
 
