@@ -1,0 +1,32 @@
+<h1 align=center>T3A07-decision-tristan</h1>
+<input type=text id='myText01' placeholder='Number 0-5'>
+<input type=button value='decision' onclick="{
+ x = document.getElementById('myText01').value
+  if(x == 5){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a five, input was: ' + document.getElementById('myText01').value
+}
+  if(x == 4){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a four, input was: ' + x
+}
+ if(x == 3){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a three, input was: ' + x
+}
+ if(x == 2){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a two, input was: ' + x
+}
+ if(x == 1){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a one, input was: ' + x
+}
+ if(x == 0){
+  document.getElementById('myDiv01').innerHTML += '<br>It is a zero, input was: ' + x
+}
+  if(document.getElementById('myText01').value > 5){
+   document.getElementById('myDiv01').innerHTML += '<br>This number is greater than five, input was: ' + x
+
+}
+  if(x<0){
+  document.getElementById('myDiv01').innerHTML += '<br> This number is less than zero, input was: ' + x
+}
+  
+}">
+<div id=myDiv01>...</div>
