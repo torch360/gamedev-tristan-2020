@@ -32,3 +32,22 @@
 }
 }">
 <div id=myDiv01>...</div>
+
+<hr>
+<br><br>
+<input type=text id=myText02 value=20>
+<input type=button value=Loop onclick="{
+  document.getElementById('myDiv02').innerHTML = ''
+  for(myLoop=0; myLoop<=document.getElementById('myText02').value; myLoop++){
+     document.getElementById('myDiv02').innerHTML += '<br>Loop#: ' + myLoop
+   if(myLoop == 5){
+     document.getElementById('myDiv02').innerHTML += ', Wow a five '
+}
+}  
+
+
+
+
+}">
+
+<div id=myDiv02>...</div>
