@@ -38,11 +38,37 @@
 <input type=text id=myText02 value=20>
 <input type=button value=Loop onclick="{
   document.getElementById('myDiv02').innerHTML = ''
+
   for(myLoop=0; myLoop<=document.getElementById('myText02').value; myLoop++){
      document.getElementById('myDiv02').innerHTML += '<br>Loop#: ' + myLoop
    if(myLoop == 5){
      document.getElementById('myDiv02').innerHTML += ', Wow a five '
 }
+   if(myLoop == 3 ){
+     document.getElementById('myDiv02').innerHTML += ', Wow a three '
+}
+   if(myLoop == 8 ){
+     document.getElementById('myDiv02').innerHTML += ', Wow an eight '
+}
+   if(myLoop%2 == 1){
+    document.getElementById('myDiv02').innerHTML += '<font color=blue>, An odd number</font>'
+     
+}
+	if(myLoop > 9){
+		document.getElementById('myDiv02').innerHTML += ', This number is greater than 9'
+}
+	if(myLoop == 12){
+		document.getElementById('myDiv02').innerHTML += ', <font color=green>This number is between 12 and 15</font> '
+        	}
+	if(myLoop == 13){
+		document.getElementById('myDiv02').innerHTML += ', <font color=green>This number is between 12 and 15</font> '
+        	}
+	if(myLoop == 14){
+		document.getElementById('myDiv02').innerHTML += ', <font color=green>This number is between 12 and 15</font> '
+        	}
+	if(myLoop == 15){
+		document.getElementById('myDiv02').innerHTML += ', <font color=green>This number is between 12 and 15</font> '
+        	}
 }  
 
 
