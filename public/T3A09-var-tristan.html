@@ -1,0 +1,24 @@
+<script>
+var myX=3
+let myY=67.4
+let myName='Tristan'
+let myLastName='Ellison'
+let myAge=17
+let myHeight='175cm'
+let myEyeColour='blue'
+document.writeln('My myX Variable is ' + myX + '<br>') 
+document.writeln('My myY Variable is ' + myY + '<br>')
+document.writeln('My myName Variable is ' + myName + '<br>')
+document.writeln('My myLastName Variable is ' + myLastName + '<br>')
+document.writeln('My myAge Variable is ' + myAge + '<br>')
+document.writeln('My myHeight Variable is ' + myHeight + '<br>')
+document.writeln('My myEyeColour Variable is ' + myEyeColour + '<br>')
+</script>
+<hr>
+
+<input type=text placeholder='Enter Something' id=myText01>
+<input type=button value='Set Variable' onclick="{
+	var x = document.getElementById('myText01').value
+ 	document.writeln('My x variable is ' + x + )  
+}">
+ 
