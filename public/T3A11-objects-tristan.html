@@ -1,0 +1,20 @@
+<h1 align=center>T3A11-objects-tristan.html</h1>
+<br>
+var person = {name:"Jake", age:"17", eyeColour:"brown", hairColour:"brown"}
+
+
+<input type=text id=myText01 placeholder=Name>
+<input type=text id=myText02 placeholder=Age>
+<input type=text id=myText03 placeholder='Eye colour'>
+<input type=text id=myText04 placeholder='Hair colour'>
+
+
+<input type=button value=set onclick="{
+	person.name = document.getElementById('myText01').value
+	person.age = document.getElementById('myText02').value
+	person.eyeColour =  document.getElementById('myText03').value
+	person.hairColour =  document.getElementById('myText04').value  
+	document.getElementById('myDiv01').innerHTML = person
+}">
+
+<div id=myDiv01>...</div>
