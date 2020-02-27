@@ -1,11 +1,28 @@
 <h1 align=center>T3A10-arrays-tristan.html</h1>
 <script>
-myArray = newArray(20)
+myArray = new Array(20)
+myArray[0] = 'John'
 </script>
-<input type=text id=myText01>
-<input type=text id=myText02>
-<input type=text id=myText03>
-<input type=button>
-<input type=button>
-<input type=button>
+<input type=text id=myText01 value=fred><br>
+<input type=text id=myText02 value=mary><br>
+<input type=text id=myText03 value=jane><br>
+<input type=button value="Array Set" onclick="{
+	document.getElementById('myDiv01').innerHTML = 'Array has been set'
+	myArray[0] = document.getElementById('myText01').value
+	myArray[1] = document.getElementById('myText02').value
+	myArray[2] = document.getElementById('myText03').value
+
+}">
+<input type=button value="Array Show" onclick="{
+      document.getElementById('myDiv01').innerHTML = ' '
+	for(x=0; x<=2; x++){
+		document.getElementById('myDiv01').innerHTML += 'myArray[' + x + '] = ' + myArray[x] + '<br>'
+
+}
+
+
+
+
+}"><br>
+
 <div id=myDiv01>...</div>
