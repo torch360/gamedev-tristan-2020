@@ -2,6 +2,7 @@
 <script>
 myArray = new Array(20)
 myArray[0] = 'John'
+myArray2 = Array(20)
 </script>
 <input type=text id=myText01 value=fred><br>
 <input type=text id=myText02 value=mary><br>
@@ -26,3 +27,17 @@ myArray[0] = 'John'
 }"><br>
 
 <div id=myDiv01>...</div>
+
+<hr>
+<br>
+<input type=text id=myText04><input type=number min=0 max=20 id=myNumber><input type=button value=Enter onclick="{
+	myArray2[document.getElementById('myNumber').value] = document.getElementById('myText04').value
+		
+}"><br>
+<input type=button value=Show onclick="{
+document.getElementById('myDiv02').innerHTML = ' '
+			for(myLoop=0; myLoop<=20; myLoop++){
+				document.getElementById('myDiv02').innerHTML += 'myArray2[' + myLoop + '] = ' + myArray2[myLoop] + '<br>'
+}
+}">
+<div id=myDiv02>...</div>
