@@ -1,6 +1,5 @@
 <h1 align=center>T3A11-objects-tristan.html</h1>
 <br>
-var person = {name:"Jake", age:"17", eyeColour:"brown", hairColour:"brown"}
 
 
 <input type=text id=myText01 placeholder=Name>
@@ -10,11 +9,26 @@ var person = {name:"Jake", age:"17", eyeColour:"brown", hairColour:"brown"}
 
 
 <input type=button value=set onclick="{
+	person = {'name' : document.getElementById('myText01').value, 'age' : document.getElementById('myText02').value, 'eyeColour' :  document.getElementById('myText03').value, 'hairColour' : document.getElementById('myText04').value  }
+ 
 	person.name = document.getElementById('myText01').value
 	person.age = document.getElementById('myText02').value
 	person.eyeColour =  document.getElementById('myText03').value
 	person.hairColour =  document.getElementById('myText04').value  
-	document.getElementById('myDiv01').innerHTML = person
+	document.getElementById('myDiv01').innerHTML = 'Name: ' + person.name + '<br>' +'Age: ' + person.age + '<br>' + 'Eye Colour: ' + person.eyeColour + '<br>' + ' Hair Colour: ' + person.hairColour
 }">
 
 <div id=myDiv01>...</div>
+<hr>
+
+	<input type=button value="Show Object" onclick="{
+		let myObjArr=[{d:'hi', t:'there'}, {e:'what\'s', u:'up'}, {f:'my', w:'guy'}] 
+		document.getElementById('myDiv02').innerHTML = myObjArr[0].d + ' ' + myObjArr[0].t + ' ' + myObjArr[1].e + ' ' + myObjArr[1].u + ' ' + myObjArr[2].f + ' ' + myObjArr[2].w
+}">
+<div id=myDiv02>...</div>
+<hr>
+<input type=button value="Show Array" onclick="{
+	let myArrObj = {q:['testing', 'test', 'tested'], p:['testing', 'test', 'tested']}
+	document.getElementById('myDiv03').innerHTML = myArrObj.q[0] + ' ' + myArrObj.q[1] + ' ' + myArrObj.q[2] + ' ' + myArrObj.p[0] + ' ' + myArrObj.p[1] + ' ' + myArrObj.p[2]
+}">
+<div id=myDiv03>...</div>
