@@ -1,0 +1,22 @@
+<script>
+function myFunc(n){
+	document.getElementById('myDiv01').innerHTML = ' '
+	let myArr=[]
+	if(n<1){
+	return []}
+		else{
+		myArr.unshift(n)
+		myFunc(n-1)}
+			document.getElementById('myDiv01').innerHTML += myArr + '<br>'
+}
+</script>
+<h1 align=center>T3A12-function-pass-tristan.html</h1>
+<input type=text id=myText01 placeholder=number>
+<br>
+<input type=button value="Recursion Array" onclick="{
+
+myFunc(document.getElementById('myText01').value)
+
+}">
+<br>
+<div id=myDiv01>...</div>
