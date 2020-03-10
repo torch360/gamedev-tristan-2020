@@ -1,0 +1,24 @@
+<h1 align=center>T3A13-loop-decision-tristan.html</h1>
+<input type=text id=myText01 placeholder=number><br>
+<input type=button value=series onclick="{
+	document.getElementById('myDiv01').innerHTML = ' '
+		myY=0
+		myX=1
+	for(myLoop01 = 0; myLoop01 <= document.getElementById('myText01').value; myLoop01++){
+		document.getElementById('myDiv01').innerHTML += myLoop01 
+		
+		if(myLoop01 == 0){
+			document.getElementById('myDiv01').innerHTML += '<br>' 
+		myX=myX+1
+		myY=myY+myX
+}
+		if(myLoop01 == myY){
+		document.getElementById('myDiv01').innerHTML += '<br>' 
+		myX=myX + 1
+		myY=myX + myY
+}
+
+
+}
+}">
+<div id=myDiv01>...</div>
